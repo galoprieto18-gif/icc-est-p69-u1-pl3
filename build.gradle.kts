@@ -15,4 +15,3 @@ tasks.test {
     testLogging { events("failed", "skipped"); exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.SHORT }
 }
 dependencyLocking { lockAllConfigurations() }
-

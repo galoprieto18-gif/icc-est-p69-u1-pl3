@@ -47,33 +47,31 @@ public class Incidente implements Comparable<Incidente> {
         return registradoEn;
     }
 
-    
-
     @Override
     public int compareTo(Incidente otro) {
-        Comparator<Incidente> comparator = Comparator.compringInt(Incidente::getSeveridad)
-        .thenComparing(Comparator.compringInt(Incidente::getMinutosRestantes));
+        Comparator<Incidente> comparator = Comparator.comparingInt(Incidente::getSeveridad)
+        .thenComparing(Comparator.comparingInt(Incidente::getMinutosRestantes))
         //CANTIDAD DE SERVICIOS servicios.size();
         .thenComparing(
-            Comparator.compringInt(
-                (Incidente i) -> i.getServicios().size())
-                .reversed()
-
-        .thenComparing(Comparator.compringInt(Incidente i) -> {
+            Comparator.comparingInt(
+                (Incidente i) -> i.getServicios().size()
+            ).reversed())
+            .thenComparing(Comparator.comparingLong((Incidente i) -> {
             
-            int sumarUserA = 0;
-            for(ServicioAfectado servicioAfectado : i.getServicios()){ 
+            long sumarUserA = 0; 
+            for(ServicioAfectado servicioAfectado : i.getServicios()) { 
                 sumarUserA += servicioAfectado.usuariosAfectados();
             }
+
              return sumarUserA;
        }).reversed())
-       .thenComparing(Incidente:: getRegistradoEn)
+       .thenComparing(Incidente::getRegistradoEn)
        .thenComparing(Incidente::getCodigo, String.CASE_INSENSITIVE_ORDER);
 
         return comparator.compare(this,otro);
     }
 
-    @Override
+    @Override 
     public String toString() {
         return "%s | severidad=%d | minutos=%d | servicios=%d | fecha=%s"
                 .formatted(codigo, severidad, minutosRestantes, servicios.size(), registradoEn);

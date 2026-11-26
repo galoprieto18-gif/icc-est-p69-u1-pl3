@@ -95,7 +95,7 @@ public final class Datos {
                         new ServicioAfectado("Servicio-2", 500), new ServicioAfectado("Servicio-3", 50)),
                 LocalDateTime.parse("2026-10-02T09:00:00")));
         datos.add(new Incidente("INC-0569", 1, 60, List.of(), LocalDateTime.parse("2026-10-04T08:00:00")));
-        datos.add(new Incidente(
+        datos.add(new Incidente( 
                 "INC-0053", 1, -120, List.of(new ServicioAfectado("Servicio-1", 10),
                         new ServicioAfectado("Servicio-2", 500), new ServicioAfectado("Servicio-3", 50)),
                 LocalDateTime.parse("2026-10-04T08:00:00")));
